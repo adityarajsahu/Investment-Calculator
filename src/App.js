@@ -12,6 +12,8 @@ function App() {
         duration: 15,
     });
 
+    const inputIsValid = userInput.duration > 0;
+
     const handleChange = (inputIdentifier, newValue) => {
         setUserInput((prevUserInput) => {
             return {
@@ -25,7 +27,8 @@ function App() {
         <React.Fragment>
             <Header />
             <UserInput onChange={handleChange} userInput={userInput} />
-            <Results input={userInput} />
+            {!inputIsValid && <p className="center">Please enter valid input data.</p>}
+            {inputIsValid && <Results input={userInput} />}
         </React.Fragment>
     );
 }
